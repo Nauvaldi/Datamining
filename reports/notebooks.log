@@ -17,36 +17,28 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-%matplotlib inline
-img=mpimg.imread('iris_types.jpg')
-plt.figure(figsize=(20,40))
-plt.axis('off')
-plt.imshow(img)
+#Visualising the clusters
+plt.figure(figsize = (7,7))
+plt.scatter(x[y_kmeans == 0, 0], x[y_kmeans == 0, 1], s = 100, c = 'purple', label = 'Iris-setosa')
+plt.scatter(x[y_kmeans == 1, 0], x[y_kmeans == 1, 1], s = 100, c = 'orange', label = 'Iris-versicolour')
+plt.scatter(x[y_kmeans == 2, 0], x[y_kmeans == 2, 1], s = 100, c = 'green', label = 'Iris-virginica')
+
+#Plotting the centroids of the clusters
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:,1], s = 100, c = 'red', label = 'Centroids')
+
+plt.legend()
+plt.show()
 ------------------
 
 [0;31m[0m
-[0;31mFileNotFoundError[0mTraceback (most recent call last)
-[0;32m<ipython-input-66-add9c9edfe13>[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0mget_ipython[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mrun_line_magic[0m[0;34m([0m[0;34m'matplotlib'[0m[0;34m,[0m [0;34m'inline'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0mimg[0m[0;34m=[0m[0mmpimg[0m[0;34m.[0m[0mimread[0m[0;34m([0m[0;34m'iris_types.jpg'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0mplt[0m[0;34m.[0m[0mfigure[0m[0;34m([0m[0mfigsize[0m[0;34m=[0m[0;34m([0m[0;36m20[0m[0;34m,[0m[0;36m40[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0mplt[0m[0;34m.[0m[0maxis[0m[0;34m([0m[0;34m'off'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0mplt[0m[0;34m.[0m[0mimshow[0m[0;34m([0m[0mimg[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mNameError[0mTraceback (most recent call last)
+[0;32m<ipython-input-78-134a5fd922f6>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m#Visualising the clusters[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0mplt[0m[0;34m.[0m[0mfigure[0m[0;34m([0m[0mfigsize[0m [0;34m=[0m [0;34m([0m[0;36m7[0m[0;34m,[0m[0;36m7[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0mplt[0m[0;34m.[0m[0mscatter[0m[0;34m([0m[0mx[0m[0;34m[[0m[0my_kmeans[0m [0;34m==[0m [0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m][0m[0;34m,[0m [0mx[0m[0;34m[[0m[0my_kmeans[0m [0;34m==[0m [0;36m0[0m[0;34m,[0m [0;36m1[0m[0;34m][0m[0;34m,[0m [0ms[0m [0;34m=[0m [0;36m100[0m[0;34m,[0m [0mc[0m [0;34m=[0m [0;34m'purple'[0m[0;34m,[0m [0mlabel[0m [0;34m=[0m [0;34m'Iris-setosa'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0mplt[0m[0;34m.[0m[0mscatter[0m[0;34m([0m[0mx[0m[0;34m[[0m[0my_kmeans[0m [0;34m==[0m [0;36m1[0m[0;34m,[0m [0;36m0[0m[0;34m][0m[0;34m,[0m [0mx[0m[0;34m[[0m[0my_kmeans[0m [0;34m==[0m [0;36m1[0m[0;34m,[0m [0;36m1[0m[0;34m][0m[0;34m,[0m [0ms[0m [0;34m=[0m [0;36m100[0m[0;34m,[0m [0mc[0m [0;34m=[0m [0;34m'orange'[0m[0;34m,[0m [0mlabel[0m [0;34m=[0m [0;34m'Iris-versicolour'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0mplt[0m[0;34m.[0m[0mscatter[0m[0;34m([0m[0mx[0m[0;34m[[0m[0my_kmeans[0m [0;34m==[0m [0;36m2[0m[0;34m,[0m [0;36m0[0m[0;34m][0m[0;34m,[0m [0mx[0m[0;34m[[0m[0my_kmeans[0m [0;34m==[0m [0;36m2[0m[0;34m,[0m [0;36m1[0m[0;34m][0m[0;34m,[0m [0ms[0m [0;34m=[0m [0;36m100[0m[0;34m,[0m [0mc[0m [0;34m=[0m [0;34m'green'[0m[0;34m,[0m [0mlabel[0m [0;34m=[0m [0;34m'Iris-virginica'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/usr/local/lib/python3.7/dist-packages/matplotlib/image.py[0m in [0;36mimread[0;34m(fname, format)[0m
-[1;32m   1462[0m             raise ValueError('Only know how to handle PNG; with Pillow '
-[1;32m   1463[0m                              'installed, Matplotlib can handle more images')
-[0;32m-> 1464[0;31m         [0;32mwith[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0mfname[0m[0;34m)[0m [0;32mas[0m [0mimage[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1465[0m             [0;32mreturn[0m [0mpil_to_array[0m[0;34m([0m[0mimage[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1466[0m     [0;32mfrom[0m [0mmatplotlib[0m [0;32mimport[0m [0m_png[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/usr/local/lib/python3.7/dist-packages/PIL/Image.py[0m in [0;36mopen[0;34m(fp, mode)[0m
-[1;32m   2841[0m [0;34m[0m[0m
-[1;32m   2842[0m     [0;32mif[0m [0mfilename[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 2843[0;31m         [0mfp[0m [0;34m=[0m [0mbuiltins[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0mfilename[0m[0;34m,[0m [0;34m"rb"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   2844[0m         [0mexclusive_fp[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   2845[0m [0;34m[0m[0m
-
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'iris_types.jpg'
-FileNotFoundError: [Errno 2] No such file or directory: 'iris_types.jpg'
+[0;31mNameError[0m: name 'x' is not defined
+NameError: name 'x' is not defined
 
