@@ -1,0 +1,55 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/dist-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 664, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+#Accuracy
+from sklearn import metrics
+print('Accuracy Score:', metrics.accuracy_score(y_test, y_pred))
+------------------
+
+[0;31m[0m
+[0;31mValueError[0mTraceback (most recent call last)
+[0;32m<ipython-input-26-1f6089d4d96d>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m#Accuracy[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;32mfrom[0m [0msklearn[0m [0;32mimport[0m [0mmetrics[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0mprint[0m[0;34m([0m[0;34m'Accuracy Score:'[0m[0;34m,[0m [0mmetrics[0m[0;34m.[0m[0maccuracy_score[0m[0;34m([0m[0my_test[0m[0;34m,[0m [0my_pred[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m/usr/local/lib/python3.7/dist-packages/sklearn/metrics/_classification.py[0m in [0;36maccuracy_score[0;34m(y_true, y_pred, normalize, sample_weight)[0m
+[1;32m    209[0m [0;34m[0m[0m
+[1;32m    210[0m     [0;31m# Compute accuracy for each possible representation[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 211[0;31m     [0my_type[0m[0;34m,[0m [0my_true[0m[0;34m,[0m [0my_pred[0m [0;34m=[0m [0m_check_targets[0m[0;34m([0m[0my_true[0m[0;34m,[0m [0my_pred[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    212[0m     [0mcheck_consistent_length[0m[0;34m([0m[0my_true[0m[0;34m,[0m [0my_pred[0m[0;34m,[0m [0msample_weight[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    213[0m     [0;32mif[0m [0my_type[0m[0;34m.[0m[0mstartswith[0m[0;34m([0m[0;34m"multilabel"[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.7/dist-packages/sklearn/metrics/_classification.py[0m in [0;36m_check_targets[0;34m(y_true, y_pred)[0m
+[1;32m     82[0m     [0my_pred[0m [0;34m:[0m [0marray[0m [0;32mor[0m [0mindicator[0m [0mmatrix[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     83[0m     """
+[0;32m---> 84[0;31m     [0mcheck_consistent_length[0m[0;34m([0m[0my_true[0m[0;34m,[0m [0my_pred[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     85[0m     [0mtype_true[0m [0;34m=[0m [0mtype_of_target[0m[0;34m([0m[0my_true[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     86[0m     [0mtype_pred[0m [0;34m=[0m [0mtype_of_target[0m[0;34m([0m[0my_pred[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.7/dist-packages/sklearn/utils/validation.py[0m in [0;36mcheck_consistent_length[0;34m(*arrays)[0m
+[1;32m    332[0m         raise ValueError(
+[1;32m    333[0m             [0;34m"Found input variables with inconsistent numbers of samples: %r"[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 334[0;31m             [0;34m%[0m [0;34m[[0m[0mint[0m[0;34m([0m[0ml[0m[0;34m)[0m [0;32mfor[0m [0ml[0m [0;32min[0m [0mlengths[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    335[0m         )
+[1;32m    336[0m [0;34m[0m[0m
+
+[0;31mValueError[0m: Found input variables with inconsistent numbers of samples: [35, 24]
+ValueError: Found input variables with inconsistent numbers of samples: [35, 24]
+
